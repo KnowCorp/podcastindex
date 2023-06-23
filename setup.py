@@ -10,8 +10,8 @@ setuptools.setup(
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/SarvagyaVaish/python-podcastindex",
-    author="Sarvagya (Survy) Vaish",
-    author_email="sarvagya.vaish7@gmail.com",
+    author="Know Systems Corp",
+    author_email="info@knowcorp.com",
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 2.7",
