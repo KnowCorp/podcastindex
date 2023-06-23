@@ -1,13 +1,17 @@
-import hashlib
-import json
-import logging
-import os
-import time
+from dotenv import load_dotenv
 
 import requests
+import hashlib
+import logging
+import time
+import json
+import os
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger()
+
+load_dotenv()
 
 
 def init(config):
@@ -96,8 +100,7 @@ class PodcastIndex:
         """
         # Perform request
         headers = self._create_headers()
-        result = requests.post(url, headers=headers,
-                               data=payload, timeout=self.timeout)
+        result = requests.post(url, headers=headers, data=payload, timeout=self.timeout)
         result.raise_for_status()
 
         # Parse the result as a dict
@@ -309,7 +312,7 @@ class PodcastIndex:
 
         # Call Api for result
         return self._make_request_get_result_helper(url, payload)
-    
+
     def episodesByPerson(self, query, clean=False):
         """
         Returns all of the episodes where the specified person is mentioned.
@@ -335,7 +338,7 @@ class PodcastIndex:
 
         # Call Api for result
         return self._make_request_get_result_helper(url, payload)
-    
+
     def recentEpisodes(self, max=None, excluding=None, before_episode_id=None):
         """
         Returns the most recent [max] number of episodes globally across the whole index, in reverse chronological
@@ -370,7 +373,9 @@ class PodcastIndex:
         # Call Api for result
         return self._make_request_get_result_helper(url, payload)
 
-    def trendingPodcasts(self, max=10, since=None, lang=None, categories=None, not_categories=None):
+    def trendingPodcasts(
+        self, max=10, since=None, lang=None, categories=None, not_categories=None
+    ):
         """
         Returns the podcasts in the index that are trending.
 
